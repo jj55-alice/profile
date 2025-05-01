@@ -10,7 +10,7 @@ const TimesTable = () => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (mode === 'question') {
         setMode('answer');
     } else {
@@ -23,8 +23,8 @@ const TimesTable = () => {
 
   }
   return (
-    <div className="w-screen h-screen bg-[#1a1a1a] flex items-center justify-center">
-      <div className="text-white text-[256px] font-bold" onClick={handleClick} onTouchEnd={handleClick}>
+    <div className="w-screen h-screen bg-[#1a1a1a] flex items-center justify-center" onClick={handleClick} onTouchEnd={handleClick}>
+      <div className="text-white text-[256px] font-bold" >
         {mode === 'question' ? `${first} X ${second}` : `${first * second}`}
       </div>
     </div>
