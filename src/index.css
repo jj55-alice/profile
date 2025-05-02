@@ -1,4 +1,16 @@
 @import "tailwindcss";
+@plugin './hero.ts';
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-sm: 40rem;      /* 예: 640px */
+  --breakpoint-md: 48rem;      /* 예: 768px */
+  --breakpoint-lg: 64rem;      /* 예: 1024px */
+  --breakpoint-xl: 80rem;      /* 예: 1280px */
+  --breakpoint-2xl: 100rem;    /* 예: 1600px */
+}
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
