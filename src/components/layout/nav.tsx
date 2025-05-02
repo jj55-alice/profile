@@ -21,11 +21,7 @@ const Nav = () => {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.value}-${index}`}>
-            <Link
-              color="foreground"
-              href={item.link}
-              size="lg"
-            >
+            <Link color="foreground" href={item.link} size="lg">
               {item.name}
             </Link>
           </NavbarMenuItem>

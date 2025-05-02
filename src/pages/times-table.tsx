@@ -1,6 +1,22 @@
 import { Button } from '@heroui/react';
 import { useState } from 'react';
+import { getJosa } from '../utils/common-utils';
 
+const NUMBER_KOREAN = [
+  '영',
+  '일',
+  '이',
+  '삼',
+  '사',
+  '오',
+  '육',
+  '칠',
+  '팔',
+  '구',
+  '십',
+  '십일',
+  '십이',
+];
 const TimesTable = () => {
   const [first, setFirst] = useState(2);
   const [second, setSecond] = useState(1);
@@ -10,15 +26,20 @@ const TimesTable = () => {
     e.preventDefault();
     e.stopPropagation();
 
+    let str = '';
     if (mode === 'question') {
       setMode('answer');
+      str = `${first * second}`;
     } else {
       const nextFirst = second === 9 ? (first === 12 ? 2 : first + 1) : first;
       const nextSecond = second === 9 ? 1 : second + 1;
       setFirst(nextFirst);
       setSecond(nextSecond);
+      str = `${nextFirst} ${nextSecond} ${getJosa(NUMBER_KOREAN[nextSecond], ['은', '는'])}`;
       setMode('question');
     }
+    const utter = new SpeechSynthesisUtterance(str);
+    speechSynthesis.speak(utter);
   };
 
   const handleClickFirst = (first: number) => () => {
