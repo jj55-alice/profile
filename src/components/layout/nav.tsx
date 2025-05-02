@@ -17,7 +17,7 @@ const Nav = () => {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-gray-900">
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="bg-gray-900">
       <NavbarContent>
         <NavbarMenuToggle className="text-gray-400" />
       </NavbarContent>
