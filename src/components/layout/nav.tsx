@@ -7,11 +7,10 @@ import {
   NavbarMenuItem,
   Link,
 } from '@heroui/react';
+import { MENU_ITEMS } from '../../constants/common';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuItems = [{ value: 'TIMES_TABLE', name: '구구단', link: '/' }];
 
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -19,7 +18,7 @@ const Nav = () => {
         <NavbarMenuToggle />
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
+        {MENU_ITEMS.map((item, index) => (
           <NavbarMenuItem key={`${item.value}-${index}`}>
             <Link color="foreground" href={item.link} size="lg">
               {item.name}
