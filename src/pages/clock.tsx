@@ -117,8 +117,8 @@ const Clock: React.FC = () => {
           {[...Array(60)].map((_, i) => (
             <div
               key={i}
-              className={`absolute left-1/2 -ml-[1.5px] h-[20px] w-[3px] bg-[#666] ${
-                i % 5 === 0 ? 'h-[33px] w-[6px]' : ''
+              className={`absolute left-1/2 -ml-[1.5px] h-[15px] w-[3px] bg-[#666] ${
+                i % 5 === 0 ? 'h-[25px] w-[6px]' : ''
               }`}
               style={{ transform: `rotate(${i * 6}deg)`, transformOrigin: '50% 200px' }}
             ></div>
@@ -131,18 +131,18 @@ const Clock: React.FC = () => {
         </Button>
       )}
       {mode === 'answer' && (
-        <div className="flex flex-row items-center gap-10">
+        <div className="flex flex-row items-center gap-2 md:gap-6">
           <div className="flex flex-row items-center">
-            <p className="text-[100px] font-bold text-[#b32626]">{hours}</p>
-            <p className="text-[100px] text-[#999]">시</p>
+            <p className="text-[40px] md:text-[80px] font-bold text-[#b32626]">{hours}</p>
+            <p className="text-[40px] md:text-[80px] text-[#999]">시</p>
           </div>
           <div className="flex flex-row items-center">
-            <p className="text-[100px] font-bold text-[#2674b3]">{minutes}</p>
-            <p className="text-[100px] text-[#999]">분</p>
+            <p className="text-[40px] md:text-[80px] font-bold text-[#2674b3]">{minutes}</p>
+            <p className="text-[40px] md:text-[80px] text-[#999]">분</p>
           </div>
           <div className="flex flex-row items-center">
-            <p className="text-[100px] font-bold text-[#ddd]">{seconds}</p>
-            <p className="text-[100px] text-[#999]">초</p>
+            <p className="text-[40px] md:text-[80px] font-bold text-[#ddd]">{seconds}</p>
+            <p className="text-[40px] md:text-[80px] text-[#999]">초</p>
           </div>
         </div>
       )}
