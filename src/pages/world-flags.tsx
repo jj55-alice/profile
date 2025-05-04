@@ -37,7 +37,7 @@ const WorldFlags = () => {
     }
   };
   return (
-    <div onClick={handleClick} className="flex flex-col items-center gap-10">
+    <div onClick={handleClick} className="flex flex-col items-center h-full gap-10">
       <div className="flex h-[600px] w-full flex-row items-center justify-center gap-10 py-10">
         {mode === 'none' ? (
           <img
