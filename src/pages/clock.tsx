@@ -69,16 +69,16 @@ const Clock: React.FC = () => {
           <span className="absolute left-1/2 top-[20px] z-[4] inline-block -translate-x-1/2 text-[44px] font-bold text-[#333]">
             12
           </span>
-          <span className="absolute right-[150px] top-[60px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute right-[165px] top-[55px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             1
           </span>
-          <span className="absolute right-[70px] top-[150px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute right-[75px] top-[145px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             2
           </span>
           <span className="absolute right-[40px] top-1/2 z-[4] inline-block -translate-y-1/2 text-[44px] font-bold text-[#333]">
             3
           </span>
-          <span className="absolute bottom-[140px] right-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute bottom-[145px] right-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             4
           </span>
           <span className="absolute bottom-[55px] right-[165px] z-[4] inline-block text-[44px] font-bold text-[#333]">
@@ -90,16 +90,16 @@ const Clock: React.FC = () => {
           <span className="absolute bottom-[55px] left-[165px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             7
           </span>
-          <span className="absolute bottom-[140px] left-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute bottom-[145px] left-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             8
           </span>
           <span className="absolute left-[40px] top-1/2 z-[4] inline-block -translate-y-1/2 text-[44px] font-bold text-[#333]">
             9
           </span>
-          <span className="absolute left-[75px] top-[150px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute left-[75px] top-[145px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             10
           </span>
-          <span className="absolute left-[150px] top-[60px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+          <span className="absolute left-[165px] top-[55px] z-[4] inline-block text-[44px] font-bold text-[#333]">
             11
           </span>
         </div>
