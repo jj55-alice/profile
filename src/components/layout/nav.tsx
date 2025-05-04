@@ -7,7 +7,7 @@ import {
   NavbarMenuItem,
   Link,
 } from '@heroui/react';
-import { MENU_ITEMS } from '../../constants/common';
+import { MENU_ITEMS } from '../../routes/router';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

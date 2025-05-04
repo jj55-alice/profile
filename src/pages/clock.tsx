@@ -1,0 +1,147 @@
+import { Button } from '@heroui/react';
+import { useMemo, useState } from 'react';
+
+const Clock: React.FC = () => {
+  const [mode, setMode] = useState<'question' | 'answer' | 'none'>('none');
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  const { hourDegrees, minuteDegrees, secondDegrees } = useMemo(() => {
+    return {
+      hourDegrees: (hours % 12) * 30 + minutes * 0.5,
+      minuteDegrees: minutes * 6,
+      secondDegrees: seconds * 6,
+    };
+  }, [hours, minutes, seconds]);
+
+  const changeTime = () => {
+    setMode('question');
+
+    const newHours = Math.floor(Math.random() * 12) + 1;
+    const newMinutes = Math.floor(Math.random() * 60);
+    const newSeconds = Math.floor(Math.random() * 60);
+
+    setHours(newHours);
+    setMinutes(newMinutes);
+    setSeconds(newSeconds);
+  };
+
+  const handleStart = () => {
+    changeTime();
+  };
+
+  const handleClick = () => {
+    if (mode === 'none') {
+      return;
+    }
+
+    if (mode === 'question') {
+      setMode('answer');
+      const utterance = new SpeechSynthesisUtterance(`${hours}시 ${minutes}분 ${seconds}초`);
+      speechSynthesis.speak(utterance);
+    }
+
+    if (mode === 'answer') {
+      changeTime();
+    }
+  };
+
+  return (
+    <div onClick={handleClick} className="flex flex-col items-center gap-10 py-10">
+      <div className="relative mx-auto h-[600px] w-[600px] rounded-full border-[28px] border-[#333] bg-[#ececec] shadow-[0_2vw_4vw_-1vw_rgba(0,0,0,0.8)]">
+        <div className="absolute inset-0 z-[10] m-auto h-[28px] w-[28px] rounded-full bg-[#ccc] shadow-[0_2px_4px_-1px_black]"></div>
+        <div>
+          <div
+            className="absolute left-1/2 top-[158px] z-[5] -ml-[4px] h-[130px] w-[8px] rounded-t-full bg-[#333]"
+            style={{ transform: `rotate(${hourDegrees}deg)`, transformOrigin: '50% 144px' }}
+          ></div>
+          <div
+            className="absolute left-1/2 top-[92px] z-[6] -ml-[4px] h-[200px] w-[8px] rounded-t-full bg-[#666]"
+            style={{ transform: `rotate(${minuteDegrees}deg)`, transformOrigin: '50% 210px' }}
+          ></div>
+          <div
+            className="absolute left-1/2 top-[52px] z-[7] -ml-[2px] h-[240px] w-[4px] rounded-t-full bg-[gold]"
+            style={{ transform: `rotate(${secondDegrees}deg)`, transformOrigin: '50% 250px' }}
+          ></div>
+        </div>
+        <div>
+          <span className="absolute left-1/2 top-[20px] z-[4] inline-block -translate-x-1/2 text-[44px] font-bold text-[#333]">
+            12
+          </span>
+          <span className="absolute right-[150px] top-[60px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            1
+          </span>
+          <span className="absolute right-[70px] top-[150px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            2
+          </span>
+          <span className="absolute right-[40px] top-1/2 z-[4] inline-block -translate-y-1/2 text-[44px] font-bold text-[#333]">
+            3
+          </span>
+          <span className="absolute bottom-[140px] right-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            4
+          </span>
+          <span className="absolute bottom-[55px] right-[165px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            5
+          </span>
+          <span className="absolute bottom-[20px] left-1/2 z-[4] inline-block -translate-x-1/2 text-[44px] font-bold text-[#333]">
+            6
+          </span>
+          <span className="absolute bottom-[55px] left-[165px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            7
+          </span>
+          <span className="absolute bottom-[140px] left-[75px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            8
+          </span>
+          <span className="absolute left-[40px] top-1/2 z-[4] inline-block -translate-y-1/2 text-[44px] font-bold text-[#333]">
+            9
+          </span>
+          <span className="absolute left-[75px] top-[150px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            10
+          </span>
+          <span className="absolute left-[150px] top-[60px] z-[4] inline-block text-[44px] font-bold text-[#333]">
+            11
+          </span>
+        </div>
+        <div
+          className="absolute left-1/2 z-[2] -ml-[2px] h-[30px] w-[4px] bg-[#666]"
+          style={{ transformOrigin: '50% 300px' }}
+        >
+          {[...Array(60)].map((_, i) => (
+            <div
+              key={i}
+              className={`absolute left-1/2 -ml-[2px] h-[30px] w-[4px] bg-[#666] ${
+                i % 5 === 0 ? 'h-[50px] w-[8px]' : ''
+              }`}
+              style={{ transform: `rotate(${i * 6}deg)`, transformOrigin: '50% 300px' }}
+            ></div>
+          ))}
+        </div>
+      </div>
+      {mode === 'none' && (
+        <Button size="lg" color="primary" onPress={handleStart}>
+          START
+        </Button>
+      )}
+      {mode === 'answer' && (
+        <div className="flex flex-row items-center gap-10">
+          <div className="flex flex-row items-center">
+            <p className="text-[120px] font-bold text-[#fff]">{hours}</p>
+            <p className="text-[120px] text-[#999]">시</p>
+          </div>
+
+          <div className="flex flex-row items-center">
+            <p className="text-[120px] font-bold text-[#fff]">{minutes}</p>
+            <p className="text-[120px] text-[#999]">분</p>
+          </div>
+          <div className="flex flex-row items-center">
+            <p className="text-[120px] font-bold text-[#fff]">{seconds}</p>
+            <p className="text-[120px] text-[#999]">초</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Clock;
