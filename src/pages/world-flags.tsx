@@ -37,8 +37,8 @@ const WorldFlags = () => {
     }
   };
   return (
-    <div onClick={handleClick} className="flex flex-col items-center h-full gap-10">
-      <div className="flex h-[600px] w-full flex-row items-center justify-center gap-10 py-10">
+    <div onClick={handleClick} className="flex flex-col items-center h-full gap-6">
+      <div className="flex h-[500px] w-full flex-row items-center justify-center">
         {mode === 'none' ? (
           <img
             src="/world.png"
@@ -65,7 +65,7 @@ const WorldFlags = () => {
       )}
       {mode === 'answer' && (
         <div className="flex flex-col items-center">
-          <p className="text-[100px] font-bold text-[#fff]">{COUNTRIES[key].name}</p>
+          <p className="text-[80px] font-bold text-[#fff]">{COUNTRIES[key].name}</p>
           <p className="text-[60px] text-[#fff]">{COUNTRIES[key].capital}</p>
         </div>
       )}
