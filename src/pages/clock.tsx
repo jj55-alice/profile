@@ -1,4 +1,5 @@
 import { Button } from '@heroui/react';
+import { motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 
 const Clock: React.FC = () => {
@@ -48,22 +49,28 @@ const Clock: React.FC = () => {
   };
 
   return (
-    <div onClick={handleClick} className="flex flex-col items-center gap-10 py-10">
+    <div onClick={handleClick} className="flex flex-col items-center gap-10 py-10 h-full">
       <div className="relative mx-auto h-[600px] w-[600px] rounded-full border-[28px] border-[#333] bg-[#ececec] shadow-[0_2vw_4vw_-1vw_rgba(0,0,0,0.8)]">
         <div className="absolute inset-0 z-[10] m-auto h-[28px] w-[28px] rounded-full bg-[#ccc] shadow-[0_2px_4px_-1px_black]"></div>
         <div>
-          <div
-            className="absolute left-1/2 top-[158px] z-[5] -ml-[4px] h-[130px] w-[8px] rounded-t-full bg-[#333]"
-            style={{ transform: `rotate(${hourDegrees}deg)`, transformOrigin: '50% 144px' }}
-          ></div>
-          <div
-            className="absolute left-1/2 top-[92px] z-[6] -ml-[4px] h-[200px] w-[8px] rounded-t-full bg-[#666]"
-            style={{ transform: `rotate(${minuteDegrees}deg)`, transformOrigin: '50% 210px' }}
-          ></div>
-          <div
-            className="absolute left-1/2 top-[52px] z-[7] -ml-[2px] h-[240px] w-[4px] rounded-t-full bg-[gold]"
-            style={{ transform: `rotate(${secondDegrees}deg)`, transformOrigin: '50% 250px' }}
-          ></div>
+          <motion.div
+            className="absolute left-1/2 top-[158px] z-[5] -ml-[4px] h-[130px] w-[8px] rounded-t-full bg-[#b32626]"
+            style={{ transformOrigin: '50% 144px' }}
+            animate={{ rotate: hourDegrees }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          ></motion.div>
+          <motion.div
+            className="absolute left-1/2 top-[92px] z-[6] -ml-[4px] h-[200px] w-[8px] rounded-t-full bg-[#2674b3]"
+            style={{ transformOrigin: '50% 210px' }}
+            animate={{ rotate: minuteDegrees }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          ></motion.div>
+          <motion.div
+            className="absolute left-1/2 top-[52px] z-[7] -ml-[2px] h-[240px] w-[4px] rounded-t-full bg-[#777]"
+            style={{ transformOrigin: '50% 250px' }}
+            animate={{ rotate: secondDegrees }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          ></motion.div>
         </div>
         <div>
           <span className="absolute left-1/2 top-[20px] z-[4] inline-block -translate-x-1/2 text-[44px] font-bold text-[#333]">
@@ -126,16 +133,15 @@ const Clock: React.FC = () => {
       {mode === 'answer' && (
         <div className="flex flex-row items-center gap-10">
           <div className="flex flex-row items-center">
-            <p className="text-[120px] font-bold text-[#fff]">{hours}</p>
+            <p className="text-[120px] font-bold text-[#b32626]">{hours}</p>
             <p className="text-[120px] text-[#999]">시</p>
           </div>
-
           <div className="flex flex-row items-center">
-            <p className="text-[120px] font-bold text-[#fff]">{minutes}</p>
+            <p className="text-[120px] font-bold text-[#2674b3]">{minutes}</p>
             <p className="text-[120px] text-[#999]">분</p>
           </div>
           <div className="flex flex-row items-center">
-            <p className="text-[120px] font-bold text-[#fff]">{seconds}</p>
+            <p className="text-[120px] font-bold text-[#ddd]">{seconds}</p>
             <p className="text-[120px] text-[#999]">초</p>
           </div>
         </div>
